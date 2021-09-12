@@ -1,5 +1,7 @@
 package top.naccl.dwz.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -20,13 +22,14 @@ import top.naccl.dwz.util.UrlUtils;
  */
 @Controller
 public class IndexController {
+	Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired
 	UrlService urlService;
 	private static String host;
 
 	@Value("${server.host}")
-	public void setHost(String host) {
-		this.host = host;
+	public void setHost(String hostStr) {
+		host = hostStr;
 	}
 
 	@GetMapping("/")
